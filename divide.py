@@ -2,8 +2,14 @@ class IncorrectInput(Exception):
     pass
 
 
-def divide(numerator=1, denominator=2):
+class MissingArgument(Exception):
+    pass
+
+
+def divide(numerator=None, denominator=None):
     try:
+        if (numerator is None or denominator is None):
+            raise MissingArgument
         return (numerator/denominator)
     except ZeroDivisionError as e:
         print("⚠️ Error:", e)
